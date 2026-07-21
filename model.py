@@ -340,8 +340,15 @@ def stack_y_batch(data, offsets, block_size):
     # TODO: for each offset, take the length-block_size slice starting at i+1 and stack rows
     return np.array([slice_y_at_offset(data, offset, block_size) for offset in offsets])
 
-# Step 44 - get_batch (not yet solved)
-# TODO: implement
+# Step 44 - get_batch
+def get_batch(data, block_size, batch_size, rng):
+    # TODO: package one training batch (X, Y) of shape (batch_size, block_size) from data using rng.
+    starts = sample_random_batch_offsets(len(data), block_size, batch_size, rng)
+    X, Y = [], []
+    for start in starts:
+        X.append(data[start : start + block_size])
+        Y.append(data[start + 1 : start + block_size + 1])
+    return np.array(X), np.array(Y)
 
 # Step 45 - allocate_count_matrix (not yet solved)
 # TODO: implement
