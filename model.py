@@ -419,7 +419,7 @@ def generate_sequence(p_matrix, start_id, length, rng):
 def decode_generated_sequence(ids, itos):
     """Decode a generated 1D array/list of token ids into a string via itos."""
     # TODO: turn ids into a readable string using itos
-    return ''.join([itos[token] for token in ids])
+    return ''.join(itos[token] for token in ids)
 
 # Step 54 - log_prob_of_pair (not yet solved)
 # TODO: implement
